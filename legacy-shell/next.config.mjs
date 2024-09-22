@@ -11,8 +11,7 @@ const nextConfig = {
     reactStrictMode: true,
     optimizeFonts: true,
     images: {
-        unoptimized: true, // Required for static export
-        domains: ['example.com'], // Add your image domains here
+        domains: ['picsum.photos'],
     },
     webpack: (config, options) => {
         const { dev, isServer } = options;
@@ -35,30 +34,13 @@ const nextConfig = {
             config.optimization.minimize = true;
             config.optimization.splitChunks = {
                 chunks: 'all',
-                minSize: 20000,
+                minSize: 10000,
                 maxSize: 244000,
-                minChunks: 1,
-                maxAsyncRequests: 30,
-                maxInitialRequests: 30,
-                automaticNameDelimiter: '~',
-                enforceSizeThreshold: 50000,
-                cacheGroups: {
-                    defaultVendors: {
-                        test: /[\\/]node_modules[\\/]/,
-                        priority: -10,
-                    },
-                    default: {
-                        minChunks: 2,
-                        priority: -20,
-                        reuseExistingChunk: true,
-                    },
-                },
             };
         }
 
         return config;
     },
-    output: 'export',
 };
 
 export default nextConfig;
