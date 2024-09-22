@@ -17,10 +17,11 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            rel="preload"
-            href="https://picsum.photos/seed/1/300/300"
-            as="image"
+            rel="preconnect"
+            href="https://picsum.photos"
+            crossOrigin="anonymous"
           />
+          <link rel="dns-prefetch" href="https://picsum.photos" />
         </Head>
         <body>
           <Main />

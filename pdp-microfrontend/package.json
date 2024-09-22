@@ -10,10 +10,10 @@
     },
     "dependencies": {
         "@module-federation/nextjs-mf": "^7.0.8",
-        "next": "^13.5.6",
+        "next": "^13.5.7",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "webpack": "^5.88.2"
+        "webpack": "^5.92.1"
     },
     "devDependencies": {
         "@types/node": "^20",

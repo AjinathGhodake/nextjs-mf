@@ -12,6 +12,10 @@ const nextConfig = {
     optimizeFonts: true,
     images: {
         domains: ['picsum.photos'],
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+        formats: ['image/webp'],
+        minimumCacheTTL: 60,
     },
     webpack: (config, options) => {
         const { dev, isServer } = options;
@@ -20,13 +24,7 @@ const nextConfig = {
                 name: 'home',
                 filename: 'static/chunks/remoteEntry.js',
                 remotes: remotes(isServer),
-                shared: {
-                    react: { singleton: true, requiredVersion: false, eager: true },
-                    'react-dom': { singleton: true, requiredVersion: false, eager: true },
-                },
-                extraOptions: {
-                    automaticAsyncBoundary: true,
-                },
+                shared: {},
             })
         );
 
@@ -34,10 +32,12 @@ const nextConfig = {
             config.optimization.minimize = true;
             config.optimization.splitChunks = {
                 chunks: 'all',
-                minSize: 10000,
-                maxSize: 244000,
+                minSize: 5000,
+                maxSize: 200000,
             };
         }
+
+        config.output.hashFunction = 'xxhash64';
 
         return config;
     },
