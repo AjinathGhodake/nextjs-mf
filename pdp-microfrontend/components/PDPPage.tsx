@@ -21,10 +21,7 @@ const ProductImage = () => {
       alt="Product image"
       width={300}
       height={300}
-      priority
-      loading="eager"
-      placeholder="blur"
-      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      fetchPriority="high"
     />
   );
 };
